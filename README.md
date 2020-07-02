@@ -22,7 +22,7 @@ docker run -d \
 livy-ofekhod
 ~~~  
 
-If you need to support batch jobs, add another Docker volume for the jars path:  
+If you need to support batch jobs, add a Docker volume for the jars path:  
 ~~~
 docker run -d \
 --name livy \
