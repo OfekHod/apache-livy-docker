@@ -52,7 +52,7 @@ livy-ofekhod
 4. Access Livy's UI via `http://localhost:8998`    
   
 ## Setup & Run with Spark Standalone (Bitnami)
-Tested with bitnami/Spark version 2.4.6
+Tested with [bitnami/Spark](https://hub.docker.com/r/bitnami/spark) version 2.4.6
 1. Save `docker-compose.yml` of bitnami/spark:  
 ~~~
 version: '2'
@@ -92,7 +92,7 @@ services:
       - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
       - SPARK_SSL_ENABLED=no
 ~~~  
-2. Start Spark with `docker-compose up &`  
+2. Start Spark with `docker-compose up &`  (Spark's UI now available at http://localhost:8080)  
 3. Build Livy image:
 ~~~
 docker build . -t livy-ofekhod
