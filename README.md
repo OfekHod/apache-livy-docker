@@ -96,9 +96,10 @@ services:
 docker build . -t livy-ofekhod
 ~~~  
 4. Run a container, note that:  
-1. Assigned network `spark-standalone_default`- the same network as bitnami/spark.  
-2. Opened only Livy's UI port because Spark Master port 7077 is open due to shared containers network.  
-3. SPARK_MASTER_ENDPOINT is `spark` (bitnami/spark exposes it that way).  
+
+* Assigned network `spark-standalone_default`- the same network as bitnami/spark.  
+* Opened only Livy's UI port because Spark Master port 7077 is open due to shared containers network.  
+* SPARK_MASTER_ENDPOINT is `spark` (bitnami/spark exposes it that way).  
 ~~~
 docker run -d \
 --name livy \
