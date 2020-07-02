@@ -5,9 +5,13 @@ RUN apt-get install unzip
 RUN apt-get -y install wget
 
 ENV SPARK_VERSION=2.4.6
+ENV HADOOP_VERSION=2.7
 ENV LIVY_VERSION=0.7.0
 
-ENV SPARK_ARCHIVE=spark-${SPARK_VERSION}-bin-hadoop2.7.tgz
+# Assuming you already downloaded Spark to the current directory from https://archive.apache.org/dist/spark/spark-2.4.6/spark-2.4.6-bin-hadoop2.7
+ENV SPARK_ARCHIVE=spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz
+
+# Assuming you already downloaded Livy to the current directory from http://mirror.23media.de/apache/incubator/livy/0.7.0-incubating/apache-livy-0.7.0-incubating-bin.zip
 ENV LIVY_ARCHIVE=apache-livy-${LIVY_VERSION}-incubating-bin.zip
 
 ENV ARCHIVES_PATH=/tmp
