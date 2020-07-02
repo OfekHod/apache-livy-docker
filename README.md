@@ -34,7 +34,7 @@ docker run -d \
 livy-ofekhod
 ~~~  
 
-For example (with batch job support):  
+For example (with batch jobs support):  
 ~~~
 docker run -d \
 --name livy \
