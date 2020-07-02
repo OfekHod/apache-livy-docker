@@ -104,7 +104,6 @@ docker build . -t livy-ofekhod
 docker run -d \
 --name livy \
 --network spark-standalone_default \
-~~~
 -e SPARK_HOME=/opt/spark-2.4.6-bin-hadoop2.7 \
 -e SPARK_MASTER_ENDPOINT=spark \
 -e SPARK_MASTER_PORT=7077 \
@@ -112,6 +111,7 @@ docker run -d \
 -e LIVY_FILE_LOCAL_DIR_WHITELIST=/ \
 -p 8998:8998 \
 livy-ofekhod
+~~~
   
 ## Use Other Spark Version  
 In order to use another Spark version:  
