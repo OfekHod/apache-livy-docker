@@ -29,7 +29,9 @@ docker run -d \
 ...
 ...
 -e JARS_FOLDER=/opt/jars \
--v <jars-path>:/opt/jars
+-v <jars-path>:/opt/jars \
+...
+livy-ofekhod
 ~~~  
 
 For example (with batch job support):  
