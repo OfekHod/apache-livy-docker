@@ -49,8 +49,8 @@ livy-ofekhod
 ~~~  
 4. Access Livy's UI via `http://localhost:8998`    
   
-## Setup & Run With Spark Standalone (Bitnami)
-Tested with Bitnami/Spark version 2.4.6
+## Setup & Run with Spark Standalone (Bitnami)
+Tested with bitnami/Spark version 2.4.6
 1. Save `docker-compose.yml` of bitnami/spark:  
 ~~~
 version: '2'
@@ -103,6 +103,7 @@ docker build . -t livy-ofekhod
 docker run -d \
 --name livy \
 --network spark-standalone_default \
+~~~
 -e SPARK_HOME=/opt/spark-2.4.6-bin-hadoop2.7 \
 -e SPARK_MASTER_ENDPOINT=spark \
 -e SPARK_MASTER_PORT=7077 \
@@ -110,4 +111,15 @@ docker run -d \
 -e LIVY_FILE_LOCAL_DIR_WHITELIST=/ \
 -p 8998:8998 \
 livy-ofekhod
-~~~
+  
+## Use Other Spark Version  
+In order to use another Spark version:  
+1. Download Spark archive (change `download_archives.sh`).  
+2. Edit `Dockerfile`'s SPARK_VERSION (possibly HADOOP_VERSION as well).  
+3. When running the container (in `docker run` command), change `-e SPARK_HOME=/opt/spark-2.4.6-bin-hadoop2.7` to your current Spark version (and possibly Hadoop).  
+
+## Use Other Livy Version
+In order to use another Livy version:  
+1. Download Livy archive (change `download_archives.sh`).  
+2. Edit `Dockerfile`'s LIVY_VERSION.  
+3. When running the container (in `docker run` command), change `-e LIVY_HOME=/opt/apache-livy-0.7.0-incubating-bin` to your current Livy version.    
