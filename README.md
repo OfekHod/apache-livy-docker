@@ -6,7 +6,7 @@ Tested on Spark Standalone version 2.4.6 and Livy version 0.7.0.
 1. Make sure you have Spark and Livy archives in this directory, you can download the latest supported versions in this repo by running:  
 ~~~
 chmod +x download_archives.sh
-./download_archives.sh`
+./download_archives.sh
 ~~~
 2. Build Livy image:
 ~~~
