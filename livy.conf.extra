@@ -1,1 +1,2 @@
+livy.spark.master = spark://localhost:7077
 livy.file.local-dir-whitelist = /
