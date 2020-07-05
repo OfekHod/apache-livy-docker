@@ -88,5 +88,5 @@ In order to use another Spark version:
 
 ## Use Other Livy Version
 In order to use another Livy version:  
-1. Download (Livy archive)[http://mirror.23media.de/apache/incubator/livy/] (change `download_archives.sh`).  
+1. Download [Livy archive](http://mirror.23media.de/apache/incubator/livy/) (change `download_archives.sh`).  
 2. Edit `Dockerfile`'s LIVY_VERSION.  
