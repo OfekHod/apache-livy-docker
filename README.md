@@ -35,7 +35,7 @@ livy-ofekhod
 4. Access Livy's UI via `http://localhost:8998`  
 
 ### Support Batch Jobs
-If you need to support batch jobs, add a Docker volume for the jars path:  
+If you need to support batch jobs, add a Docker volume for the jars path and a corresponding local directory whitelist path for Livy (`livy.file.local-dir-whitelist`):  
 ~~~
 docker run -d \
 --name livy \
@@ -70,6 +70,7 @@ SPARK_MASTER_ENDPOINT
 SPARK_MASTER_PORT
 LIVY_FILE_LOCAL_DIR_WHITELIST
 ~~~  
+Both `SPARK_MASTER_ENDPOINT` and `SPARK_MASTER_PORT` should be provided in order to compound `livy.spark.master`, otherwise it will be taken from `livy.conf.extra`
 
 ## Setup & Run with Spark Standalone (Bitnami)
 Tested with [bitnami/Spark](https://hub.docker.com/r/bitnami/spark) version 2.4.6
