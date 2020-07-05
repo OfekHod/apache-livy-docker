@@ -45,7 +45,7 @@ docker run -d \
 -p 8998:8998 \
 -p 7077:7077 \
 -e JARS_FOLDER=/opt/jars \
--v /opt/spark-2.4.6-bin-hadoop2.7/examples/jars:/opt/jars \
+-v $PWD/jars:/opt/jars \
 livy-ofekhod
 ~~~  
 4. Access Livy's UI via `http://localhost:8998`    
