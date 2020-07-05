@@ -17,7 +17,7 @@ docker run -d \
 --name livy \
 -e SPARK_MASTER_ENDPOINT=<spark-master-url> \
 -e SPARK_MASTER_PORT=<spark-master-port> \
--e LIVY_FILE_LOCAL_DIR_WHITELIST=/ \
+-e LIVY_FILE_LOCAL_DIR_WHITELIST=/opt/jars \
 -p 8998:8998 \
 -p 7077:7077 \
 livy-ofekhod
@@ -41,7 +41,7 @@ docker run -d \
 --name livy \
 -e SPARK_MASTER_ENDPOINT=spark \
 -e SPARK_MASTER_PORT=7077 \
--e LIVY_FILE_LOCAL_DIR_WHITELIST=/ \
+-e LIVY_FILE_LOCAL_DIR_WHITELIST=/opt/jars \
 -p 8998:8998 \
 -p 7077:7077 \
 -e JARS_FOLDER=/opt/jars \
@@ -107,21 +107,19 @@ docker run -d \
 --network spark-standalone_default \
 -e SPARK_MASTER_ENDPOINT=spark \
 -e SPARK_MASTER_PORT=7077 \
--e SPARK_HOME=/opt/spark-2.4.6-bin-hadoop2.7 \
--e LIVY_HOME=/opt/apache-livy-0.7.0-incubating-bin \
--e LIVY_FILE_LOCAL_DIR_WHITELIST=/ \
+-e LIVY_FILE_LOCAL_DIR_WHITELIST=/opt/jars \
 -p 8998:8998 \
+-e JARS_FOLDER=/opt/jars \
+-v $PWD/jars:/opt/jars \
 livy-ofekhod
 ~~~
   
 ## Use Other Spark Version  
 In order to use another Spark version:  
-1. Download Spark archive (change `download_archives.sh`).  
+1. Download relevant (Spark archive)[https://archive.apache.org/dist/spark/] (change `download_archives.sh`).  
 2. Edit `Dockerfile`'s SPARK_VERSION (possibly HADOOP_VERSION as well).  
-3. When running the container (in `docker run` command), change `-e SPARK_HOME=/opt/spark-2.4.6-bin-hadoop2.7` to your current Spark version (and possibly Hadoop).  
 
 ## Use Other Livy Version
 In order to use another Livy version:  
-1. Download Livy archive (change `download_archives.sh`).  
+1. Download (Livy archive)[http://mirror.23media.de/apache/incubator/livy/] (change `download_archives.sh`).  
 2. Edit `Dockerfile`'s LIVY_VERSION.  
-3. When running the container (in `docker run` command), change `-e LIVY_HOME=/opt/apache-livy-0.7.0-incubating-bin` to your current Livy version.    
