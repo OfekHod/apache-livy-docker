@@ -130,9 +130,8 @@ docker run -d \
 -e SPARK_MASTER_ENDPOINT=spark \
 -e SPARK_MASTER_PORT=7077 \
 -e LIVY_FILE_LOCAL_DIR_WHITELIST=/opt/jars \
--p 8998:8998 \
--e JARS_FOLDER=/opt/jars \
 -v $PWD/jars:/opt/jars \
+-p 8998:8998 \
 livy-ofekhod
 ~~~
   
