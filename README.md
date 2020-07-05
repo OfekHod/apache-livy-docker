@@ -17,8 +17,6 @@ docker run -d \
 --name livy \
 -e SPARK_MASTER_ENDPOINT=<spark-master-url> \
 -e SPARK_MASTER_PORT=<spark-master-port> \
--e SPARK_HOME=/opt/spark-2.4.6-bin-hadoop2.7 \
--e LIVY_HOME=/opt/apache-livy-0.7.0-incubating-bin \
 -e LIVY_FILE_LOCAL_DIR_WHITELIST=/ \
 -p 8998:8998 \
 -p 7077:7077 \
@@ -43,8 +41,6 @@ docker run -d \
 --name livy \
 -e SPARK_MASTER_ENDPOINT=spark \
 -e SPARK_MASTER_PORT=7077 \
--e SPARK_HOME=/opt/spark-2.4.6-bin-hadoop2.7 \
--e LIVY_HOME=/opt/apache-livy-0.7.0-incubating-bin \
 -e LIVY_FILE_LOCAL_DIR_WHITELIST=/ \
 -p 8998:8998 \
 -p 7077:7077 \
