@@ -74,67 +74,12 @@ Both `SPARK_MASTER_ENDPOINT` and `SPARK_MASTER_PORT` should be provided in order
 
 ## Setup & Run with Spark Standalone (Bitnami)
 Tested with [bitnami/Spark](https://hub.docker.com/r/bitnami/spark) version 2.4.6
-1. Save `docker-compose.yml` of bitnami/spark:  
-~~~
-version: '2'
-
-services:
-  spark:
-    image: docker.io/bitnami/spark:2.4.6
-    environment:
-      - SPARK_MODE=master
-      - SPARK_RPC_AUTHENTICATION_ENABLED=no
-      - SPARK_RPC_ENCRYPTION_ENABLED=no
-      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
-      - SPARK_SSL_ENABLED=no
-    ports:
-      - "8080:8080"
-      - "7077:7077"
-  spark-worker-1:
-    image: docker.io/bitnami/spark:2.4.6
-    environment:
-      - SPARK_MODE=worker
-      - SPARK_MASTER_URL=spark://spark:7077
-      - SPARK_WORKER_MEMORY=1G
-      - SPARK_WORKER_CORES=1
-      - SPARK_RPC_AUTHENTICATION_ENABLED=no
-      - SPARK_RPC_ENCRYPTION_ENABLED=no
-      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
-      - SPARK_SSL_ENABLED=no
-  spark-worker-2:
-    image: docker.io/bitnami/spark:2.4.6
-    environment:
-      - SPARK_MODE=worker
-      - SPARK_MASTER_URL=spark://spark:7077
-      - SPARK_WORKER_MEMORY=1G
-      - SPARK_WORKER_CORES=1
-      - SPARK_RPC_AUTHENTICATION_ENABLED=no
-      - SPARK_RPC_ENCRYPTION_ENABLED=no
-      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
-      - SPARK_SSL_ENABLED=no
-~~~  
-2. Start Spark with `docker-compose up &`  (Spark's UI now available at http://localhost:8080)  
-3. Build Livy image:
-~~~
-docker build . -t livy-ofekhod
-~~~  
-4. Run a container, note that:  
-
-* Assigned network `spark-standalone_default`- the same network as bitnami/spark.  
-* Opened only Livy's UI port because Spark Master port 7077 is open due to shared containers network.  
-* SPARK_MASTER_ENDPOINT is `spark` (bitnami/spark exposes it that way).  
-~~~
-docker run -d \
---name livy \
---network spark-standalone_default \
--e SPARK_MASTER_ENDPOINT=spark \
--e SPARK_MASTER_PORT=7077 \
--e LIVY_FILE_LOCAL_DIR_WHITELIST=/opt/jars \
--v $PWD/jars:/opt/jars \
--p 8998:8998 \
-livy-ofekhod
-~~~
   
+Use `spark-standalone/bitnami/docker-compose.yml` in order to run Livy with Spark Standalone on your computer:  
+~~~
+docker-compose --file spark-standalone-support/bitnami/docker-compose.yml up -d
+~~~
+
 ## Use Other Spark Version  
 In order to use another Spark version:  
 1. Download relevant (Spark archive)[https://archive.apache.org/dist/spark/] (change `download_archives.sh`).  
