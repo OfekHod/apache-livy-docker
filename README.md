@@ -3,7 +3,6 @@ Apache Livy server for Docker with Spark dependencies.
 Tested on Spark Standalone version 2.4.6 and Livy version 0.7.0.  
 
 ## Build & Run
-### Interactive Session
 1. Make sure you have Spark and Livy archives in this directory, you can download the latest supported versions in this repo by running:  
 ~~~
 ./download_archives.sh
