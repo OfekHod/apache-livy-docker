@@ -3,7 +3,6 @@ Apache Livy server for Docker with Spark dependencies.
 Tested on Spark Standalone version 2.4.6 and Livy version 0.7.0.  
 
 ## Build & Run
-### Interactive Session
 1. Make sure you have Spark and Livy archives in this directory, you can download the latest supported versions in this repo by running:  
 ~~~
 ./download_archives.sh
@@ -36,7 +35,7 @@ livy-ofekhod
 4. Access Livy's UI via `http://localhost:8998`  
 
 ### Support Batch Jobs
-If you need to support batch jobs, add a Docker volume for the jars path:  
+If you need to support batch jobs, add a Docker volume for the jars path and a corresponding local directory whitelist path for Livy (`livy.file.local-dir-whitelist`):  
 ~~~
 docker run -d \
 --name livy \
@@ -71,6 +70,7 @@ SPARK_MASTER_ENDPOINT
 SPARK_MASTER_PORT
 LIVY_FILE_LOCAL_DIR_WHITELIST
 ~~~  
+Both `SPARK_MASTER_ENDPOINT` and `SPARK_MASTER_PORT` should be provided in order to compound `livy.spark.master`, otherwise it will be taken from `livy.conf.extra`
 
 ## Setup & Run with Spark Standalone (Bitnami)
 Tested with [bitnami/Spark](https://hub.docker.com/r/bitnami/spark) version 2.4.6
@@ -130,9 +130,8 @@ docker run -d \
 -e SPARK_MASTER_ENDPOINT=spark \
 -e SPARK_MASTER_PORT=7077 \
 -e LIVY_FILE_LOCAL_DIR_WHITELIST=/opt/jars \
--p 8998:8998 \
--e JARS_FOLDER=/opt/jars \
 -v $PWD/jars:/opt/jars \
+-p 8998:8998 \
 livy-ofekhod
 ~~~
   
