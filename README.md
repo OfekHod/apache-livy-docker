@@ -83,7 +83,8 @@ docker-compose --file spark-standalone-support/bitnami/docker-compose.yml up -d
 ## Use Other Spark Version  
 In order to use another Spark version:  
 1. Download relevant (Spark archive)[https://archive.apache.org/dist/spark/] (change `download_archives.sh`).  
-2. Edit `Dockerfile`'s SPARK_VERSION (possibly HADOOP_VERSION as well).  
+2. Edit `Dockerfile`'s SPARK_VERSION (possibly HADOOP_VERSION as well).   
+3. (If Spark Standalone): update `spark-standalone-support/bitnami/docker-compose.yml` to use the correct spark/bitnami images tags for the desired Spark version.
 
 ## Use Other Livy Version
 In order to use another Livy version:  
