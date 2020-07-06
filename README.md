@@ -61,7 +61,28 @@ livy-ofekhod
 ~~~  
    
 ### Extra Parameters To livy.conf
-If you need to add extra parameters to `livy.conf`, please add them to `livy.conf.extra`.  
+If you need to add extra parameters to `livy.conf`, please add them to `livy.conf.extra` and make this file accessible via Docker volume with:
+~~~
+docker run -d \
+--name livy \
+...
+...
+-v $PWD/livy.conf.extra:/opt/livy.conf.extra \
+...
+livy-ofekhod
+~~~  
+  
+For example:  
+~~~
+docker run -d \
+--name livy \
+-e SPARK_MASTER_ENDPOINT=spark \
+-e SPARK_MASTER_PORT=7077 \
+-p 8998:8998 \
+-p 7077:7077 \
+-v $PWD/livy.conf.extra:/opt/livy.conf.extra \
+livy-ofekhod
+~~~  
   
 Note that parameters from env (-e in `docker run`) overrides parameters from `livy.conf.extra`.  
 Supported parameters from env are:  
