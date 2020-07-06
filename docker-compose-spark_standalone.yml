@@ -37,7 +37,6 @@ services:
   livy:
     image: livy-ofekhod
     container_name: livy
-    network_mode: bitnami_default
     environment:
       - SPARK_MASTER_ENDPOINT=spark
       - SPARK_MASTER_PORT=7077
@@ -46,6 +45,7 @@ services:
       - "8998:8998"
     volumes:
       - $PWD/jars:/opt/jars
+      - $PWD/livy.conf.extra:/opt/livy.conf.extra
     depends_on:
       - "spark"
       - "spark-worker-1"
