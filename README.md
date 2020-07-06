@@ -96,9 +96,11 @@ Both `SPARK_MASTER_ENDPOINT` and `SPARK_MASTER_PORT` should be provided in order
 ## Setup & Run with Spark Standalone (Bitnami)
 Tested with [bitnami/Spark](https://hub.docker.com/r/bitnami/spark) version 2.4.6
   
-Use `spark-standalone/bitnami/docker-compose.yml` in order to run Livy with Spark Standalone on your computer:  
+1. Follow the stages 1,2 of [Build & Run](https://github.com/OfekHod/apache-livy-docker#build--run) in order to build livy image on your computer (not available on DockerHub yet).  
+
+Use `docker-compose-spark_standalone.yml` in order to run Livy with Spark Standalone on your computer:  
 ~~~
-docker-compose --file spark-standalone-support/bitnami/docker-compose.yml up -d
+docker-compose --file docker-compose-spark_standalone.yml up -d
 ~~~
 
 ## Use Other Spark Version  
